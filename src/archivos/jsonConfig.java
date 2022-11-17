@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import procesos.registroConfig;
-
+import procesos.inicioSesionConfig;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -36,6 +36,24 @@ public class jsonConfig {
             e.printStackTrace();
         }
     }
+    public void leerConfig2(inicioSesionConfig config1){
+        JSONParser parser = new JSONParser();
+        try{
+            FileReader reader =new FileReader(this.archivo);
+            JSONObject obj = (JSONObject) parser.parse(reader);
+            leerPas2(obj, config1);
+            leerChof2(obj, config1);
+            System.out.println("Lectura correcta"+ obj);
+            System.out.println("");
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
     public void escribeConfig(registroConfig config){
         JSONObject JSONconfig = new JSONObject();
         JSONconfig.put("Chofer", config.choferesToJSON());
@@ -48,7 +66,7 @@ public class jsonConfig {
             System.out.println(e);
             e.printStackTrace();
         }
-        System.out.println("Configuracion guardada");
+        System.out.println("Datos guardados");
     }
     public void leerChof(JSONObject jsonObject, registroConfig config){
         JSONArray arrayChof = (JSONArray) jsonObject.get("Chofer");
@@ -84,6 +102,43 @@ public class jsonConfig {
             String contrasenia= (String)pasj.get("contrasenia");
             Pasajero p = new Pasajero(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
             config.creaPasajero(p);
+        }
+    }
+
+    public void leerChof2(JSONObject jsonObject, inicioSesionConfig config1){
+        JSONArray arrayChof = (JSONArray) jsonObject.get("Chofer");
+        Iterator it = arrayChof.iterator();
+        while (it.hasNext()){
+            JSONObject chof =(JSONObject) it.next();
+            String nombres= (String)chof.get("nombres");
+            String apellidoPat= (String)chof.get("apellidoPat");
+            String apellidoMat= (String)chof.get("apellidoMat");
+            String generoS = (String) chof.get("genero");
+            char genero = generoS.charAt(0);
+            String telefono= (String)chof.get("telefono");
+            String DNI= (String)chof.get("DNI");
+            String email= (String)chof.get("email");
+            String contrasenia= (String)chof.get("contrasenia");
+            Chofer c = new Chofer(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
+            config1.creaChofer(c);
+        }
+    }
+    public void leerPas2(JSONObject jsonObject, inicioSesionConfig config1){
+        JSONArray arrayPasj = (JSONArray) jsonObject.get("Pasajero");
+        Iterator it = arrayPasj.iterator();
+        while (it.hasNext()){
+            JSONObject pasj =(JSONObject) it.next();
+            String nombres= (String)pasj.get("nombres");
+            String apellidoPat= (String)pasj.get("apellidoPat");
+            String apellidoMat= (String)pasj.get("apellidoMat");
+            String generoS = (String) pasj.get("genero");
+            char genero = generoS.charAt(0);
+            String telefono= (String)pasj.get("telefono");
+            String DNI= (String)pasj.get("DNI");
+            String email= (String)pasj.get("email");
+            String contrasenia= (String)pasj.get("contrasenia");
+            Pasajero p = new Pasajero(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
+            config1.creaPasajero(p);
         }
     }
     public void escribeDatos(){

@@ -2,15 +2,17 @@ import java.util.Scanner;
 import entidades.Chofer;
 import entidades.Pasajero;
 import procesos.registroConfig;
+import procesos.inicioSesionConfig;
 import archivos.jsonConfig;
 public class KeyCab {
     static Scanner s = new Scanner(System.in);
     public static void main(String[] args) {
         registroConfig config = new registroConfig();
+        inicioSesionConfig config1 = new inicioSesionConfig();
         int option;
         jsonConfig js = new jsonConfig();
         js.leerConfig(config);
-
+        js.leerConfig2(config1);
         System.out.println("Bienvenido seleccione el menu el cual ingresar");
         do {
             imprimirMenuInicial();
@@ -20,10 +22,10 @@ public class KeyCab {
                     registro(config);
                     break;
                 case 2:
-                    IniciarSesionPsj(config);
+                    IniciarSesionPsj(config1);
                     break;
                 case 3:
-                    IniciarSesionChof(config);
+                    IniciarSesionChof(config1);
                     break;
                 case 4:
                     salirApp();
@@ -82,21 +84,39 @@ public class KeyCab {
             }
         }
     }
-    public static void IniciarSesionPsj(registroConfig config){
+    public static void IniciarSesionPsj(inicioSesionConfig config1){
         System.out.println("");
         System.out.println("Ingrese su email");
         String email = s.next();
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
-        config.IniciarSesionPsj(email,contrasenia);
+        if (config1.IniciarSesionPasajero(email,contrasenia) == 1){
+            imprimirMenuPas();
+        }
     }
-    public static void IniciarSesionChof(registroConfig config){
+    public static void IniciarSesionChof(inicioSesionConfig config1){
         System.out.println("");
         System.out.println("Ingrese su email");
         String email = s.next();
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
-        config.IniciarSesionChof(email,contrasenia);
+        if (config1.IniciarSesionChofer(email,contrasenia) == 1){
+            imprimirMenuChof();
+        }
+    }
+    public static void imprimirMenuPas(){
+        System.out.println("");
+        System.out.println("Desea viajar");
+        System.out.println("Revisar el Historial de Viajes");
+        System.out.println("Menu de configuracion de Usuario");
+        System.out.println("Cerrar Sesion");
+    }
+    public static void imprimirMenuChof(){
+        System.out.println("");
+        System.out.println("Desea viajar");
+        System.out.println("Revisar el Historial de Viajes");
+        System.out.println("Menu de configuracion de Usuario");
+        System.out.println("Cerrar Sesion");
     }
     public static void salirApp(){
         System.out.println("");
