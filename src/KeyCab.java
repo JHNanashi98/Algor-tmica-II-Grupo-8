@@ -161,21 +161,9 @@ public class KeyCab {
         System.out.println("1) Desea aceptar una solicitud de Viaje");
         System.out.println("2) Revisar el Historial de Viajes");
         System.out.println("3) Menu de configuracion de Usuario");
-        System.out.println("4) Cerrar Sesion");
-
-        System.out.println("Desea viajar");
-        System.out.println("Revisar el Historial de Viajes");
-        System.out.println("Menu de configuracion de Usuario");
-        System.out.println("Cerrar Sesion");
+        System.out.println("4) Cerrar Sesion");        
     }
-    public static void imprimirMenuChof(){
-        System.out.println("");
-        System.out.println("Desea viajar");
-        System.out.println("Revisar el Historial de Viajes");
-        System.out.println("Menu de configuracion de Usuario");
-        System.out.println("Cerrar Sesion");
-
-    }
+    
     public static void salirApp(){
         System.out.println("");
         System.out.println("Gracias por usar KeyCab!");
