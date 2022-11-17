@@ -92,6 +92,26 @@ public class KeyCab {
         String contrasenia = s.next();
         if (config1.IniciarSesionPasajero(email,contrasenia) == 1){
             imprimirMenuPas();
+            int option;
+            do {
+                imprimirMenuChof();;
+                option = s.nextInt();
+                switch (option) {
+                    case 1:
+                        System.out.println("Buscando chof.....");
+                        break;
+                    case 2:
+                        System.out.println("Appi no disponible de momento, regrese mas tarde");
+                        break;
+                    case 3:
+                        System.out.println("Cambiar datos o borrar usuario");
+                        break;
+                    case 4:
+                        System.out.println("Regresando al menu principal.....");
+                        break;
+                }
+            }
+            while (option != 4);
         }
     }
     public static void IniciarSesionChof(inicioSesionConfig config1){
@@ -101,22 +121,42 @@ public class KeyCab {
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
         if (config1.IniciarSesionChofer(email,contrasenia) == 1){
-            imprimirMenuChof();
+            int option;
+            do {
+                imprimirMenuChof();;
+                option = s.nextInt();
+                switch (option) {
+                    case 1:
+                        System.out.println("Buscando chof.....");
+                        break;
+                    case 2:
+                        System.out.println("Appi no disponible de momento, regrese mas tarde");
+                        break;
+                    case 3:
+                        System.out.println("Cambiar datos o borrar usuario");
+                        break;
+                    case 4:
+                        System.out.println("Regresando al menu principal.....");
+                        break;
+                }
+            }
+            while (option != 4);
         }
     }
     public static void imprimirMenuPas(){
         System.out.println("");
-        System.out.println("Desea viajar");
-        System.out.println("Revisar el Historial de Viajes");
-        System.out.println("Menu de configuracion de Usuario");
-        System.out.println("Cerrar Sesion");
+        System.out.println("1) Desea Solicitar un Viaje");
+        System.out.println("2) Revisar el Historial de Viajes");
+        System.out.println("3) Menu de configuracion de Usuario");
+        System.out.println("4) Cerrar Sesion");
+
     }
     public static void imprimirMenuChof(){
         System.out.println("");
-        System.out.println("Desea viajar");
-        System.out.println("Revisar el Historial de Viajes");
-        System.out.println("Menu de configuracion de Usuario");
-        System.out.println("Cerrar Sesion");
+        System.out.println("1) Desea aceptar una solicitud de Viaje");
+        System.out.println("2) Revisar el Historial de Viajes");
+        System.out.println("3) Menu de configuracion de Usuario");
+        System.out.println("4) Cerrar Sesion");
     }
     public static void salirApp(){
         System.out.println("");

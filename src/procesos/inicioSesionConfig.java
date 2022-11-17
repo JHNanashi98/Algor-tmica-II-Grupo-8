@@ -25,9 +25,7 @@ public class inicioSesionConfig extends configuracion {
         while (pas.hasMoreElements()) {
             Pasajero pasajero = pas.nextElement();
             String email1  = String.valueOf(pasajero.getEmail());
-            System.out.println(getChoferes());
             if (email1.equals(email)) {
-                System.out.println("Usuario detectado: " + pasajero.NombreCompleto());
                 if (pasajero.getContrasenia().equals(contra)) {
                     System.out.println("Bievenido: " + pasajero.NombreCompleto());
                     return 1;
@@ -41,6 +39,7 @@ public class inicioSesionConfig extends configuracion {
         Enumeration<Chofer> cf = this.getChoferes().elements();
         while (cf.hasMoreElements()) {
             Chofer chofer = cf.nextElement();
+            String email1  = String.valueOf(chofer.getEmail());
             if (chofer.getEmail().equals(email) && chofer.getContrasenia().equals(contra)) {
                 System.out.println("Bievenido"+chofer.NombreCompleto());
                 return 1;
