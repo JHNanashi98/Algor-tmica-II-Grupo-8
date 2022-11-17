@@ -144,7 +144,6 @@ public class KeyCab {
                 }
             }
             while (option != 4);
-
         }
     }
     public static void imprimirMenuPas(){
@@ -154,7 +153,6 @@ public class KeyCab {
         System.out.println("2) Revisar el Historial de Viajes");
         System.out.println("3) Menu de configuracion de Usuario");
         System.out.println("4) Cerrar Sesion");
-
     }
     public static void imprimirMenuChof(){
         System.out.println("");
@@ -162,7 +160,6 @@ public class KeyCab {
         System.out.println("2) Revisar el Historial de Viajes");
         System.out.println("3) Menu de configuracion de Usuario");
         System.out.println("4) Cerrar Sesion");
-
     }
     public static void salirApp(){
         System.out.println("");
