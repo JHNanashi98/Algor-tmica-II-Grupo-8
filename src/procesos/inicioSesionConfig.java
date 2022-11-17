@@ -40,6 +40,7 @@ public class inicioSesionConfig extends configuracion {
         while (cf.hasMoreElements()) {
             Chofer chofer = cf.nextElement();
             String email1  = String.valueOf(chofer.getEmail());
+
             if (chofer.getEmail().equals(email) && chofer.getContrasenia().equals(contra)) {
                 System.out.println("Bievenido"+chofer.NombreCompleto());
                 return 1;
