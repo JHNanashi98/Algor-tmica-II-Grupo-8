@@ -92,6 +92,7 @@ public class KeyCab {
         String contrasenia = s.next();
         if (config1.IniciarSesionPasajero(email,contrasenia) == 1){
             imprimirMenuPas();
+
             int option;
             do {
                 imprimirMenuChof();;
@@ -112,6 +113,7 @@ public class KeyCab {
                 }
             }
             while (option != 4);
+
         }
     }
     public static void IniciarSesionChof(inicioSesionConfig config1){
@@ -121,6 +123,7 @@ public class KeyCab {
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
         if (config1.IniciarSesionChofer(email,contrasenia) == 1){
+
             int option;
             do {
                 imprimirMenuChof();;
@@ -141,10 +144,12 @@ public class KeyCab {
                 }
             }
             while (option != 4);
+
         }
     }
     public static void imprimirMenuPas(){
         System.out.println("");
+
         System.out.println("1) Desea Solicitar un Viaje");
         System.out.println("2) Revisar el Historial de Viajes");
         System.out.println("3) Menu de configuracion de Usuario");
@@ -157,6 +162,19 @@ public class KeyCab {
         System.out.println("2) Revisar el Historial de Viajes");
         System.out.println("3) Menu de configuracion de Usuario");
         System.out.println("4) Cerrar Sesion");
+
+        System.out.println("Desea viajar");
+        System.out.println("Revisar el Historial de Viajes");
+        System.out.println("Menu de configuracion de Usuario");
+        System.out.println("Cerrar Sesion");
+    }
+    public static void imprimirMenuChof(){
+        System.out.println("");
+        System.out.println("Desea viajar");
+        System.out.println("Revisar el Historial de Viajes");
+        System.out.println("Menu de configuracion de Usuario");
+        System.out.println("Cerrar Sesion");
+
     }
     public static void salirApp(){
         System.out.println("");
