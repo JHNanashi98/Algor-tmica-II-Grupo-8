@@ -1,4 +1,10 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
+
+import com.google.maps.GeocodingApiRequest;
+import com.google.maps.GeolocationApiRequest;
+import com.google.maps.GeolocationApi;
 
 import entidades.Auto;
 import entidades.Chofer;
@@ -6,6 +12,7 @@ import entidades.Pasajero;
 import procesos.registroConfig;
 import procesos.inicioSesionConfig;
 import archivos.jsonConfig;
+
 public class KeyCab {
     static Scanner s = new Scanner(System.in);
     public static void main(String[] args) {
@@ -107,7 +114,10 @@ public class KeyCab {
                 option = s.nextInt();
                 switch (option) {
                     case 1:
+                        System.out.println("Introducir ubicacion");
                         System.out.println("Buscando chof.....");
+                        Calendar c = new GregorianCalendar();
+                        System.out.println("Hora de inicio de busqueda "+c.getTime());
                         break;
                     case 2:
                         System.out.println("Appi no disponible de momento, regrese mas tarde");
