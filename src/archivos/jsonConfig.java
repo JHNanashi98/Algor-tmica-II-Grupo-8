@@ -12,23 +12,26 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.Iterator;
+import entidades.Auto;
 public class jsonConfig {
     private String archivo;
-    public jsonConfig(){
-        this.archivo="config.json";
+
+    public jsonConfig() {
+        this.archivo = "config.json";
     }
-    public void leerConfig(registroConfig config){
+
+    public void leerConfig(registroConfig config) {
         JSONParser parser = new JSONParser();
-        try{
-            FileReader reader =new FileReader(this.archivo);
+        try {
+            FileReader reader = new FileReader(this.archivo);
             JSONObject obj = (JSONObject) parser.parse(reader);
             leerPas(obj, config);
             leerChof(obj, config);
-            System.out.println("Lectura correcta"+ obj);
+            System.out.println("Lectura correcta" + obj);
             System.out.println("");
-           }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,17 +39,17 @@ public class jsonConfig {
             e.printStackTrace();
         }
     }
-    public void leerConfig2(inicioSesionConfig config1){
+
+    public void leerConfig2(inicioSesionConfig config1) {
         JSONParser parser = new JSONParser();
-        try{
-            FileReader reader =new FileReader(this.archivo);
+        try {
+            FileReader reader = new FileReader(this.archivo);
             JSONObject obj = (JSONObject) parser.parse(reader);
             leerPas2(obj, config1);
             leerChof2(obj, config1);
-            System.out.println("Lectura correcta"+ obj);
+            System.out.println("Lectura correcta" + obj);
             System.out.println("");
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -54,34 +57,42 @@ public class jsonConfig {
             e.printStackTrace();
         }
     }
-    public void escribeConfig(registroConfig config){
+
+    public void escribeConfig(registroConfig config) {
         JSONObject JSONconfig = new JSONObject();
         JSONconfig.put("Chofer", config.choferesToJSON());
         JSONconfig.put("Pasajero", config.pasajerosToJSON());
-        try{
+        try {
             FileWriter writer = new FileWriter(this.archivo);
             writer.write(JSONconfig.toJSONString());
             writer.flush();
-        } catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e);
             e.printStackTrace();
         }
         System.out.println("Datos guardados");
     }
-    public void leerChof(JSONObject jsonObject, registroConfig config){
+
+    public void leerChof(JSONObject jsonObject, registroConfig config) {
         JSONArray arrayChof = (JSONArray) jsonObject.get("Chofer");
         Iterator it = arrayChof.iterator();
-        while (it.hasNext()){
-            JSONObject chof =(JSONObject) it.next();
-            String nombres= (String)chof.get("nombres");
-            String apellidoPat= (String)chof.get("apellidoPat");
-            String apellidoMat= (String)chof.get("apellidoMat");
+        while (it.hasNext()) {
+            JSONObject chof = (JSONObject) it.next();
+            String nombres = (String) chof.get("nombres");
+            String apellidoPat = (String) chof.get("apellidoPat");
+            String apellidoMat = (String) chof.get("apellidoMat");
             String generoS = (String) chof.get("genero");
             char genero = generoS.charAt(0);
-            String telefono= (String)chof.get("telefono");
-            String DNI= (String)chof.get("DNI");
-            String email= (String)chof.get("email");
-            String contrasenia= (String)chof.get("contrasenia");
+            String telefono = (String) chof.get("telefono");
+            String DNI = (String) chof.get("DNI");
+            String email = (String) chof.get("email");
+            String contrasenia = (String) chof.get("contrasenia");
+            JSONObject auto = (JSONObject)chof.get("Auto");
+            String capa = (String)auto.get("capacidad");
+            int capacidad =Integer.parseInt(capa);
+            String marca = (String)auto.get("marca");
+            String placa = (String)auto.get("placa");
+            Auto a = new Auto(capacidad, marca,placa);
             Chofer c = new Chofer(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
             config.creaChofer(c);
         }
@@ -119,6 +130,12 @@ public class jsonConfig {
             String DNI= (String)chof.get("DNI");
             String email= (String)chof.get("email");
             String contrasenia= (String)chof.get("contrasenia");
+            JSONObject auto = (JSONObject)chof.get("Auto");
+            String capa = (String)auto.get("capacidad");
+            int capacidad =Integer.parseInt(capa);
+            String marca = (String)auto.get("marca");
+            String placa = (String)auto.get("placa");
+            Auto a = new Auto(capacidad, marca,placa);
             Chofer c = new Chofer(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
             config1.creaChofer(c);
         }
@@ -141,7 +158,7 @@ public class jsonConfig {
             config1.creaPasajero(p);
         }
     }
-    public void escribeDatos(){
+    public void escribeDatosChof(){
         JSONParser parser = new JSONParser();
         try{
             Object obj =parser.parse(new FileReader(archivo));
@@ -158,6 +175,7 @@ public class jsonConfig {
                 System.out.println("Telefono "+ jsonObject1.get("telefono"));
                 System.out.println("DNI "+ jsonObject1.get("DNI"));
                 System.out.println("email "+ jsonObject1.get("email"));
+                System.out.println("Auto"+ jsonObject1.get("Auto"));
             }
         }
         catch (FileNotFoundException e) {

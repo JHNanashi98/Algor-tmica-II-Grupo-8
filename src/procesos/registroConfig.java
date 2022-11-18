@@ -1,5 +1,6 @@
 package procesos;
 
+import entidades.Auto;
 import entidades.Chofer;
 import entidades.Pasajero;
 import org.json.simple.JSONArray;
@@ -9,31 +10,6 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 public class registroConfig extends configuracion{
-
-    public int creaChofer(Chofer chof){
-        Enumeration<Chofer> cf = this.getChoferes().elements();
-        while(cf.hasMoreElements()) {
-            Chofer chofer = cf.nextElement();
-            if(chofer.getEmail().equals(chof.getEmail())){
-                System.out.println("Este correo ya se encuentra registrado, intente con otro");
-                return 1;
-            }
-        }
-        this.getChoferes().add((Chofer) chof);
-        return 0;
-    }
-    public int creaPasajero(Pasajero pas){
-        Enumeration<Pasajero> psj = this.getPasajeros().elements();
-        while (psj.hasMoreElements()){
-            Pasajero pasa = psj.nextElement();
-            if(pasa.getEmail().equals(pas.getEmail())) {
-                System.out.println("Este correo ya se encuentra registrado, intente con otro");
-                return 1;
-            }
-        }
-        this.getPasajeros().add((Pasajero) pas);
-        return 0;
-    }
     public JSONArray pasajerosToJSON(){
         JSONArray arrayPasa = new JSONArray();
         Enumeration <Pasajero> pj = this.getPasajeros().elements();
@@ -52,6 +28,7 @@ public class registroConfig extends configuracion{
             else obj.put("genero", "N");
             obj.put("DNI", p.getDNI());
             obj.put("email", p.getEmail());
+            obj.put("telefono", p.getTelefono());
             obj.put("contrasenia", p.getContrasenia());
             arrayPasa.add(obj);
         }
@@ -76,6 +53,7 @@ public class registroConfig extends configuracion{
             obj.put("DNI", c.getDNI());
             obj.put("email", c.getEmail());
             obj.put("contrasenia", c.getContrasenia());
+            obj.put("telefono", c.getTelefono());
             arrayChof.add(obj);
         }
         return arrayChof;

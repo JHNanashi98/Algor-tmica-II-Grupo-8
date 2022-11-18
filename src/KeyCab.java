@@ -1,4 +1,6 @@
 import java.util.Scanner;
+
+import entidades.Auto;
 import entidades.Chofer;
 import entidades.Pasajero;
 import procesos.registroConfig;
@@ -77,6 +79,14 @@ public class KeyCab {
                     System.out.println("Usuario creado correctamente");
                 }
             } else {
+                System.out.println("Digite los datos de su Auto");
+                System.out.println("capacidad");
+                int capacidad = s.nextInt();
+                System.out.println("Marca");
+                String marca = s.next();
+                System.out.println("Placa");
+                String placa = s.next();
+                Auto a = new Auto(capacidad, marca, placa);
                 Chofer c = new Chofer(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
                 if (config.creaChofer(c)==0) {
                     System.out.println("Usuario creado correctamente");
@@ -91,11 +101,9 @@ public class KeyCab {
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
         if (config1.IniciarSesionPasajero(email,contrasenia) == 1){
-            imprimirMenuPas();
-
             int option;
             do {
-                imprimirMenuChof();;
+                imprimirMenuPas();
                 option = s.nextInt();
                 switch (option) {
                     case 1:
@@ -123,14 +131,13 @@ public class KeyCab {
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
         if (config1.IniciarSesionChofer(email,contrasenia) == 1){
-
             int option;
             do {
                 imprimirMenuChof();;
                 option = s.nextInt();
                 switch (option) {
                     case 1:
-                        System.out.println("Buscando chof.....");
+                        System.out.println("Buscando solicitud de pasajero");
                         break;
                     case 2:
                         System.out.println("Appi no disponible de momento, regrese mas tarde");
