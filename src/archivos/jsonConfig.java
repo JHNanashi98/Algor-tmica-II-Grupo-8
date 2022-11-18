@@ -86,12 +86,12 @@ public class jsonConfig {
             String DNI = (String) chof.get("DNI");
             String email = (String) chof.get("email");
             String contrasenia = (String) chof.get("contrasenia");
-            JSONObject auto = (JSONObject)chof.get("Auto");
+            /* JSONObject auto = (JSONObject)chof.get("Auto");
             String capa = (String)auto.get("capacidad");
             int capacidad =Integer.parseInt(capa);
             String marca = (String)auto.get("marca");
             String placa = (String)auto.get("placa");
-            Auto a = new Auto(capacidad, marca,placa);
+            Auto a = new Auto(capacidad, marca,placa); */
             Chofer c = new Chofer(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
             config.creaChofer(c);
         }
@@ -129,12 +129,12 @@ public class jsonConfig {
             String DNI= (String)chof.get("DNI");
             String email= (String)chof.get("email");
             String contrasenia= (String)chof.get("contrasenia");
-            JSONObject auto = (JSONObject)chof.get("Auto");
+            /* JSONObject auto = (JSONObject)chof.get("Auto");
             String capa = (String)auto.get("capacidad");
             int capacidad =Integer.parseInt(capa);
             String marca = (String)auto.get("marca");
             String placa = (String)auto.get("placa");
-            Auto a = new Auto(capacidad, marca,placa);
+            Auto a = new Auto(capacidad, marca,placa); */
             Chofer c = new Chofer(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
             config1.creaChofer(c);
         }

@@ -62,10 +62,11 @@ public class KeyCab {
         System.out.println("Presione 3 o otro numero para salir");
         int opc = s.nextInt();
         if(opc ==1 || opc == 2) {
+            Scanner f = new Scanner(System.in);
             System.out.println("");
             System.out.println("Llene sus datos basicos");
             System.out.println("Nombres");
-            String nombres = s.next();
+            String nombres = f.nextLine();
             System.out.println("Apellido Paterno");
             String apellidoPat = s.next();
             System.out.println("Apellido Materno");
