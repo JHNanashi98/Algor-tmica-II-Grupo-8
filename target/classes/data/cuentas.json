@@ -1,0 +1,66 @@
+{
+  "Pasajero": [
+    {
+      "genero": "M",
+      "apellidoMat": "Cock",
+      "contrasenia": "13131313",
+      "DNI": "13131313",
+      "email": "joaquin.hidalgo@unmsm.edu.pe",
+      "nombres": "Joaquin Enrique",
+      "apellidoPat": "Hidalgo"
+    },
+    {
+      "genero": "M",
+      "apellidoMat": "Hidalgo",
+      "contrasenia": "1312",
+      "DNI": "14",
+      "email": "ECH@gmail.com",
+      "nombres": "Enrique",
+      "apellidoPat": "Cock"
+    }
+  ],
+  "Chofer": [
+    {
+      "Auto": {
+        "marca": "toyota",
+        "capacidad": "4",
+        "placa": "x123"
+      },
+      "genero": "M",
+      "apellidoMat": "Ortiz",
+      "contrasenia": "12121212",
+      "DNI": "12121212",
+      "email": "emerson.huaman@unmsm.edu.pe",
+      "nombres": "Emerson Raul",
+      "apellidoPat": "Huaman"
+    },
+    {
+      "Auto": {
+        "marca": "toyota corola",
+        "capacidad": "8",
+        "placa": "x124"
+      },
+      "genero": "M",
+      "apellidoMat": "Huaman",
+      "contrasenia": "contra",
+      "DNI": "46",
+      "email": "raul@gmail.com",
+      "nombres": "Raul",
+      "apellidoPat": "Ortiz"
+    },
+    {
+      "Auto": {
+        "marca": "toyota",
+        "capacidad": "4",
+        "placa": "x126"
+      },
+      "genero": "M",
+      "apellidoMat": "efg",
+      "contrasenia": "111",
+      "DNI": "123",
+      "email": "abc@hotmail.com",
+      "nombres": "aaa",
+      "apellidoPat": "bcd"
+    }
+  ]
+}

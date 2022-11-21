@@ -17,30 +17,27 @@ public class KeyCab {
     static Scanner s = new Scanner(System.in);
     public static void main(String[] args) {
         registroConfig config = new registroConfig();
-        inicioSesionConfig config1 = new inicioSesionConfig();
+        inicioSesionConfig inicio = new inicioSesionConfig();
         int option;
         jsonConfig js = new jsonConfig();
         js.leerConfig(config);
-        js.leerConfig2(config1);
         System.out.println("Bienvenido seleccione el menu el cual ingresar");
         do {
+            js.escribeConfig(config);
             imprimirMenuInicial();
             option = s.nextInt();
             switch (option) {
                 case 1:
                     registro(config);
                     break;
-                case 2:
-                    IniciarSesionPsj(config1);
+                    case 2:
+                    IniciarSesionPsj(inicio);
                     break;
                 case 3:
-                    IniciarSesionChof(config1);
+                    IniciarSesionChof(inicio);
                     break;
                 case 4:
                     salirApp();
-                    break;
-                case 5:
-                    js.escribeConfig(config);
                     break;
             }
         }
@@ -53,7 +50,6 @@ public class KeyCab {
         System.out.println("Presione 2 para iniciar sesion como pasajero");
         System.out.println("Presione 3 para iniciar sesion como chofer");
         System.out.println("Presione 4 para salir de la aplicacion");
-        System.out.println("Presione 5 para guardar los datos");
     }
     public static void registro(registroConfig config) {
         System.out.println("Menu de registro proceda a llenar sus datos");
@@ -102,13 +98,14 @@ public class KeyCab {
             }
         }
     }
-    public static void IniciarSesionPsj(inicioSesionConfig config1){
+    public static void IniciarSesionPsj(inicioSesionConfig inicio){
         System.out.println("");
         System.out.println("Ingrese su email");
         String email = s.next();
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
-        if (config1.IniciarSesionPasajero(email,contrasenia) == 1){
+        System.out.println(inicio.getPasajeros());
+        if (inicio.IniciarSesionPasajero(email,contrasenia) == 1){
             int option;
             do {
                 imprimirMenuPas();
@@ -135,13 +132,13 @@ public class KeyCab {
 
         }
     }
-    public static void IniciarSesionChof(inicioSesionConfig config1){
+    public static void IniciarSesionChof(inicioSesionConfig inicio){
         System.out.println("");
         System.out.println("Ingrese su email");
         String email = s.next();
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
-        if (config1.IniciarSesionChofer(email,contrasenia) == 1){
+        if (inicio.IniciarSesionChofer(email,contrasenia) == 1){
             int option;
             do {
                 imprimirMenuChof();;
