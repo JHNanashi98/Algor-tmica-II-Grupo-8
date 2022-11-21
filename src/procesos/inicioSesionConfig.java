@@ -6,6 +6,7 @@ import entidades.Pasajero;
 import java.util.Enumeration;
 
 public class inicioSesionConfig extends configuracion {
+
     public int IniciarSesionPasajero(String email, String contra) {
         Enumeration<Pasajero> pas = this.getPasajeros().elements();
         while (pas.hasMoreElements()) {

@@ -18,7 +18,7 @@ public class jsonConfig {
     private String archivo;
 
     public jsonConfig() {
-        this.archivo = "config.json";
+        this.archivo = "src/data/cuentas.json";
     }
 
     public void leerConfig(registroConfig config) {
@@ -26,8 +26,8 @@ public class jsonConfig {
         try {
             FileReader reader = new FileReader(this.archivo);
             JSONObject obj = (JSONObject) parser.parse(reader);
-            leerPas(obj, config);
-            leerChof(obj, config);
+            leerCrearPas(obj, config);
+            leerCrearChof(obj, config);
             System.out.println("Lectura correcta" + obj);
             System.out.println("");
         } catch (FileNotFoundException e) {
@@ -38,25 +38,6 @@ public class jsonConfig {
             e.printStackTrace();
         }
     }
-
-    public void leerConfig2(inicioSesionConfig config1) {
-        JSONParser parser = new JSONParser();
-        try {
-            FileReader reader = new FileReader(this.archivo);
-            JSONObject obj = (JSONObject) parser.parse(reader);
-            leerPas2(obj, config1);
-            leerChof2(obj, config1);
-            System.out.println("Lectura correcta" + obj);
-            System.out.println("");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void escribeConfig(registroConfig config) {
         JSONObject JSONconfig = new JSONObject();
         JSONconfig.put("Chofer", config.choferesToJSON());
@@ -69,10 +50,10 @@ public class jsonConfig {
             System.out.println(e);
             e.printStackTrace();
         }
-        System.out.println("Datos guardados");
+        System.out.println("Sistema Actualizado");
     }
 
-    public void leerChof(JSONObject jsonObject, registroConfig config) {
+    public void leerCrearChof(JSONObject jsonObject, registroConfig config) {
         JSONArray arrayChof = (JSONArray) jsonObject.get("Chofer");
         Iterator it = arrayChof.iterator();
         while (it.hasNext()) {
@@ -96,7 +77,7 @@ public class jsonConfig {
             config.creaChofer(c);
         }
     }
-    public void leerPas(JSONObject jsonObject, registroConfig config){
+    public void leerCrearPas(JSONObject jsonObject, registroConfig config){
         JSONArray arrayPasj = (JSONArray) jsonObject.get("Pasajero");
         Iterator it = arrayPasj.iterator();
         while (it.hasNext()){
@@ -115,7 +96,25 @@ public class jsonConfig {
         }
     }
 
-    public void leerChof2(JSONObject jsonObject, inicioSesionConfig config1){
+    /*public void leerConfig2(inicioSesionConfig config1) {
+        JSONParser parser = new JSONParser();
+        try {
+            FileReader reader = new FileReader(this.archivo);
+            JSONObject obj = (JSONObject) parser.parse(reader);
+            leerPas2(obj, config1);
+            leerChof2(obj, config1);
+            System.out.println("Lectura correcta" + obj);
+            System.out.println("");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }*/
+
+    /*public void leerChof2(JSONObject jsonObject, inicioSesionConfig config1){
         JSONArray arrayChof = (JSONArray) jsonObject.get("Chofer");
         Iterator it = arrayChof.iterator();
         while (it.hasNext()){
@@ -129,12 +128,12 @@ public class jsonConfig {
             String DNI= (String)chof.get("DNI");
             String email= (String)chof.get("email");
             String contrasenia= (String)chof.get("contrasenia");
-            /* JSONObject auto = (JSONObject)chof.get("Auto");
+            JSONObject auto = (JSONObject)chof.get("Auto");
             String capa = (String)auto.get("capacidad");
             int capacidad =Integer.parseInt(capa);
             String marca = (String)auto.get("marca");
             String placa = (String)auto.get("placa");
-            Auto a = new Auto(capacidad, marca,placa); */
+            Auto a = new Auto(capacidad, marca,placa);
             Chofer c = new Chofer(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
             config1.creaChofer(c);
         }
@@ -184,6 +183,6 @@ public class jsonConfig {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 }
