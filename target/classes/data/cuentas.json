@@ -5,6 +5,7 @@
       "apellidoMat": "Cock",
       "contrasenia": "13131313",
       "DNI": "13131313",
+      "telefono": "123",
       "email": "joaquin.hidalgo@unmsm.edu.pe",
       "nombres": "Joaquin Enrique",
       "apellidoPat": "Hidalgo"
@@ -13,6 +14,7 @@
       "genero": "M",
       "apellidoMat": "Hidalgo",
       "contrasenia": "1312",
+      "telefono": "124",
       "DNI": "14",
       "email": "ECH@gmail.com",
       "nombres": "Enrique",
@@ -30,6 +32,7 @@
       "apellidoMat": "Ortiz",
       "contrasenia": "12121212",
       "DNI": "12121212",
+      "telefono": "125",
       "email": "emerson.huaman@unmsm.edu.pe",
       "nombres": "Emerson Raul",
       "apellidoPat": "Huaman"
@@ -44,6 +47,7 @@
       "apellidoMat": "Huaman",
       "contrasenia": "contra",
       "DNI": "46",
+      "telefono": "126",
       "email": "raul@gmail.com",
       "nombres": "Raul",
       "apellidoPat": "Ortiz"
@@ -58,6 +62,7 @@
       "apellidoMat": "efg",
       "contrasenia": "111",
       "DNI": "123",
+      "telefono": "127",
       "email": "abc@hotmail.com",
       "nombres": "aaa",
       "apellidoPat": "bcd"

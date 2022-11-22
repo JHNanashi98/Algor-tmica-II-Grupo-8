@@ -5,21 +5,24 @@ import entidades.Chofer;
 import entidades.Pasajero;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Enumeration;
-import java.util.Vector;
+import java.util.HashMap;
 
 public class registroConfig extends configuracion{
-    public int creaChofer(Chofer chof){
-        Enumeration<Chofer> cf = this.getChoferes().elements();
-        while(cf.hasMoreElements()) {
-            Chofer chofer = cf.nextElement();
-            if(chofer.getEmail().equals(chof.getEmail())){
+    public int creaChofer(Chofer chof, Auto auto){
+        Iterator<Map.Entry<Chofer, Auto>> entrada = this.getMap().entrySet().iterator();
+        while(entrada.hasNext()) {
+            Map.Entry<Chofer,Auto> entry = entrada.next();
+            if(chof.getEmail().equals(entry.getKey().getEmail())){
                 System.out.println("Este correo ya se encuentra registrado, intente con otro");
                 return 1;
             }
+            System.out.println(getMap());
         }
-        this.getChoferes().add((Chofer) chof);
+        this.getMap().put(chof,auto);
+        System.out.println(getMap());
         return 0;
     }
     public int creaPasajero(Pasajero pas){
@@ -60,9 +63,15 @@ public class registroConfig extends configuracion{
     }
     public JSONArray choferesToJSON(){
         JSONArray arrayChof= new JSONArray();
-        Enumeration <Chofer> cf = this.getChoferes().elements();
-        while  (cf.hasMoreElements()){
-            Chofer c = cf.nextElement();
+        HashMap<Chofer, Auto> map = this.getMap();
+        int i=0;
+        Chofer [] chof = new Chofer[map.size()];
+        Auto [] aut = new Auto[map.size()];
+        for(Map.Entry<Chofer,Auto> entrada : map.entrySet()){
+            chof[i] = entrada.getKey();
+            aut[i] = entrada.getValue();
+            Chofer c = chof[i];
+            Auto a = aut[i];
             JSONObject obj = new JSONObject();
             obj.put("nombres", c.getNombres());
             obj.put("apellidoPat", c.getApellidoPat());
@@ -79,6 +88,12 @@ public class registroConfig extends configuracion{
             obj.put("contrasenia", c.getContrasenia());
             obj.put("telefono", c.getTelefono());
             arrayChof.add(obj);
+            JSONObject obj2= new JSONObject();
+            obj2.put("marca",a.getMarca());
+            obj2.put("capacidad",a.getCapacidad());
+            obj2.put("placa",a.getCapacidad());
+            obj.put("Auto", obj2);
+            i++;
         }
         return arrayChof;
     }
