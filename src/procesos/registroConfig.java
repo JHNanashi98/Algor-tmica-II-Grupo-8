@@ -90,8 +90,8 @@ public class registroConfig extends configuracion{
             arrayChof.add(obj);
             JSONObject obj2= new JSONObject();
             obj2.put("marca",a.getMarca());
-            obj2.put("capacidad",a.getCapacidad());
-            obj2.put("placa",a.getCapacidad());
+            obj2.put("capacidad",String.valueOf(a.getCapacidad()));
+            obj2.put("placa",a.getPlaca());
             obj.put("Auto", obj2);
             i++;
         }

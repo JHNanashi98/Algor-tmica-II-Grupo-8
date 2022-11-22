@@ -10,10 +10,10 @@ import java.util.Vector;
 public abstract class configuracion {
     private static Vector<Chofer> choferes;
     private static Vector<Pasajero> pasajeros;
-
     private static Vector<Auto> autos;
 
     private static HashMap<Chofer,Auto> choferAutoMap;
+
     public configuracion(){
         this.choferes = new Vector<Chofer>();
         this.pasajeros = new Vector<Pasajero>();
@@ -30,8 +30,8 @@ public abstract class configuracion {
     public static Vector<Auto> getAutos() {
         return autos;
     }
-
     public HashMap<Chofer,Auto> getMap() {
         return choferAutoMap;
     }
+
 }

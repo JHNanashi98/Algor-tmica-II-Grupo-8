@@ -67,11 +67,11 @@ public class jsonConfig {
             String email = (String) chof.get("email");
             String contrasenia = (String) chof.get("contrasenia");
             JSONObject auto = (JSONObject)chof.get("Auto");
-            String capa = (String)auto.get("capacidad");
+            String capa = (String) auto.get("capacidad");
             int capacidad =Integer.parseInt(capa);
             String marca = (String)auto.get("marca");
             String placa = (String)auto.get("placa");
-            Auto a = new Auto(capacidad, marca,placa);
+            Auto a = new Auto(capacidad,marca,placa);
             Chofer c = new Chofer(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
             config.creaChofer(c,a);
         }
@@ -94,8 +94,9 @@ public class jsonConfig {
             config.creaPasajero(p);
         }
     }
-    /*
-    public void escribeDatosChof(){
+
+
+   /* public void escribeDatosChof(){
         JSONParser parser = new JSONParser();
         try{
             Object obj =parser.parse(new FileReader(archivo));
