@@ -92,7 +92,7 @@ public class KeyCab {
                 String placa = s.next();
                 Auto a = new Auto(capacidad, marca, placa);
                 Chofer c = new Chofer(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
-                if (config.creaChofer(c)==0) {
+                if (config.creaChofer(c,a)==0) {
                     System.out.println("Usuario creado correctamente");
                 }
             }
