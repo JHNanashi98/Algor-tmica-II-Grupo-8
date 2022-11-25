@@ -1,9 +1,12 @@
 package procesos;
 
+import entidades.Auto;
 import entidades.Chofer;
 import entidades.Pasajero;
 
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class inicioSesionConfig extends configuracion {
 
@@ -18,14 +21,18 @@ public class inicioSesionConfig extends configuracion {
                     return 1;
                 }
             }
+
         }
         System.out.println("Contraseña incorrecta");
         return 0;
     }
     public int IniciarSesionChofer(String email, String contra) {
-        Enumeration<Chofer> cf = this.getChoferes().elements();
-        while (cf.hasMoreElements()) {
-            Chofer chofer = cf.nextElement();
+        HashMap<Chofer, Auto> map = this.getMap();
+        int i=0;
+        Chofer [] chof = new Chofer[map.size()];
+        for (Map.Entry<Chofer,Auto> entrada : map.entrySet()) {
+            chof[i] =entrada.getKey();
+            Chofer chofer = chof[i];
             String email1  = String.valueOf(chofer.getEmail());
             if (email1.equals(email)) {
                 if (chofer.getContrasenia().equals(contra)) {
@@ -33,6 +40,7 @@ public class inicioSesionConfig extends configuracion {
                     return 1;
                 }
             }
+            i++;
         }
         System.out.println("Contraseña incorrecta");
         return 0;

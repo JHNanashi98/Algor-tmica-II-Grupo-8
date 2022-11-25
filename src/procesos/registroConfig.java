@@ -19,10 +19,8 @@ public class registroConfig extends configuracion{
                 System.out.println("Este correo ya se encuentra registrado, intente con otro");
                 return 1;
             }
-            System.out.println(getMap());
         }
         this.getMap().put(chof,auto);
-        System.out.println(getMap());
         return 0;
     }
     public int creaPasajero(Pasajero pas){
