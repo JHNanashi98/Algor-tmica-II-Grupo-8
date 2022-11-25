@@ -6,7 +6,6 @@ import entidades.Auto;
 import entidades.Chofer;
 import entidades.Pasajero;
 
-import procesos.geoLocalizacion;
 import procesos.manejoMapa;
 import procesos.registroConfig;
 import procesos.inicioSesionConfig;
