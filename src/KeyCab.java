@@ -2,13 +2,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-import com.google.maps.GeocodingApiRequest;
-import com.google.maps.GeolocationApiRequest;
-import com.google.maps.GeolocationApi;
-
 import entidades.Auto;
 import entidades.Chofer;
+import entidades.Cuenta;
 import entidades.Pasajero;
+
+import procesos.manejoMapa;
 import procesos.registroConfig;
 import procesos.inicioSesionConfig;
 import archivos.jsonConfig;
@@ -104,15 +103,25 @@ public class KeyCab {
         String email = s.next();
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
-        System.out.println(inicio.getPasajeros());
-        if (inicio.IniciarSesionPasajero(email,contrasenia) == 1){
+        jsonConfig js = new jsonConfig();
+        if (inicio.IniciarSesionPasajero(email,contrasenia) != null){
+            Pasajero p = inicio.IniciarSesionPasajero(email,contrasenia);
+            System.out.println("Bievenido " + p.NombreCompleto());
+            Cuenta cuenta = new Chofer(p.getNombres(), p.getApellidoPat(),p.getApellidoPat(),p.getGenero(),p.getTelefono(),p.getDNI(),p.getEmail(),p.getContrasenia());
             int option;
             do {
                 imprimirMenuPas();
                 option = s.nextInt();
                 switch (option) {
                     case 1:
+                        Scanner l = new Scanner(System.in);
                         System.out.println("Introducir ubicacion");
+                        System.out.println("Latitud");
+                        double lat = l.nextDouble();
+                        System.out.println("longitud");
+                        double lon= l.nextDouble();
+                        manejoMapa mapa = new manejoMapa();
+                        mapa.crearMapa(lat, lon);
                         System.out.println("Buscando chof.....");
                         Calendar c = new GregorianCalendar();
                         System.out.println("Hora de inicio de busqueda "+c.getTime());
@@ -121,7 +130,8 @@ public class KeyCab {
                         System.out.println("Appi no disponible de momento, regrese mas tarde");
                         break;
                     case 3:
-                        System.out.println("Cambiar datos o borrar usuario");
+                        System.out.println("Appi no disponible de momento");
+                        js.escribePerfil(cuenta, p.getTipo());
                         break;
                     case 4:
                         System.out.println("Regresando al menu principal.....");
@@ -138,10 +148,14 @@ public class KeyCab {
         String email = s.next();
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
-        if (inicio.IniciarSesionChofer(email,contrasenia) == 1){
+        jsonConfig js = new jsonConfig();
+        if (inicio.IniciarSesionChofer(email,contrasenia) != null){
+            Chofer c = inicio.IniciarSesionChofer(email,contrasenia);
+            Cuenta cuenta = new Chofer(c.getNombres(), c.getApellidoPat(),c.getApellidoPat(),c.getGenero(),c.getTelefono(),c.getDNI(),c.getEmail(),c.getContrasenia());
+            System.out.println("Bievenido " + c.NombreCompleto());
             int option;
             do {
-                imprimirMenuChof();;
+                imprimirMenuChof();
                 option = s.nextInt();
                 switch (option) {
                     case 1:
@@ -151,7 +165,8 @@ public class KeyCab {
                         System.out.println("Appi no disponible de momento, regrese mas tarde");
                         break;
                     case 3:
-                        System.out.println("Cambiar datos o borrar usuario");
+                        System.out.println("Appi no disponible de momento");
+                        js.escribePerfil(cuenta, c.getTipo());
                         break;
                     case 4:
                         System.out.println("Regresando al menu principal.....");
@@ -163,7 +178,6 @@ public class KeyCab {
     }
     public static void imprimirMenuPas(){
         System.out.println("");
-
         System.out.println("1) Desea Solicitar un Viaje");
         System.out.println("2) Revisar el Historial de Viajes");
         System.out.println("3) Menu de configuracion de Usuario");

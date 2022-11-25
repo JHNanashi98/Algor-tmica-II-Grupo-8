@@ -1,6 +1,7 @@
 package archivos;
 
 import entidades.Chofer;
+import entidades.Cuenta;
 import entidades.Pasajero;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -19,7 +20,6 @@ public class jsonConfig {
     public jsonConfig() {
         this.archivo = "src/data/cuentas.json";
     }
-
     public void leerConfig(registroConfig config) {
         JSONParser parser = new JSONParser();
         try {
@@ -96,24 +96,32 @@ public class jsonConfig {
     }
 
 
-   /* public void escribeDatosChof(){
+   public void escribePerfil(Cuenta cuenta, String tipo){
         JSONParser parser = new JSONParser();
         try{
             Object obj =parser.parse(new FileReader(archivo));
             JSONObject jsonObject =(JSONObject) obj;
-            System.out.println("Lectura correcta "+ jsonObject);
-            JSONArray array = (JSONArray) jsonObject.get("Chofer");
+            JSONArray array = selcTipo(tipo,jsonObject);
             System.out.println("");
             for(int i=0; i<array.size(); i++){
                 JSONObject jsonObject1 = (JSONObject) array.get(i);
-                System.out.println("Datos de Usuario "+ i);
-                System.out.println("Nombres "+ jsonObject1.get("nombres"));
-                System.out.println("Apellidos "+ jsonObject1.get("apellidoPat")+jsonObject1.get("apellidoMat"));
-                System.out.println("Genero "+ jsonObject1.get("genero"));
-                System.out.println("Telefono "+ jsonObject1.get("telefono"));
-                System.out.println("DNI "+ jsonObject1.get("DNI"));
-                System.out.println("email "+ jsonObject1.get("email"));
-                System.out.println("Auto"+ jsonObject1.get("Auto"));
+                if(cuenta.getEmail().equals(jsonObject1.get("email"))){
+                    System.out.println("Mostrando datos del Usuario ");
+                    System.out.println("Nombres "+ jsonObject1.get("nombres"));
+                    System.out.println("Apellidos "+ jsonObject1.get("apellidoPat")+jsonObject1.get("apellidoMat"));
+                    System.out.println("Genero "+ jsonObject1.get("genero"));
+                    System.out.println("Telefono "+ jsonObject1.get("telefono"));
+                    System.out.println("DNI "+ jsonObject1.get("DNI"));
+                    System.out.println("email "+ jsonObject1.get("email"));
+                    System.out.println("contrasenia "+ jsonObject1.get("contrasenia"));
+                    if(tipo.equals("Chofer")) {
+                        JSONObject auto = (JSONObject)jsonObject1.get("Auto");
+                        System.out.println("Auto");
+                        System.out.println("marca " + auto.get("marca"));
+                        System.out.println("capacidad " + auto.get("capacidad"));
+                        System.out.println("placa " + auto.get("placa"));
+                    }
+                }
             }
         }
         catch (FileNotFoundException e) {
@@ -123,6 +131,15 @@ public class jsonConfig {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-    }*/
-
+    }
+    public JSONArray selcTipo(String tipo, JSONObject jsonObject){
+        if(tipo.equals("Chofer")){
+            JSONArray arrayC = (JSONArray) jsonObject.get("Chofer");
+            return arrayC;
+        }
+        else{
+            JSONArray arrayP = (JSONArray) jsonObject.get("Pasajero");
+            return arrayP;
+        }
+    }
 }
