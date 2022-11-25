@@ -167,7 +167,6 @@ public class KeyCab {
     }
     public static void imprimirMenuPas(){
         System.out.println("");
-
         System.out.println("1) Desea Solicitar un Viaje");
         System.out.println("2) Revisar el Historial de Viajes");
         System.out.println("3) Menu de configuracion de Usuario");
