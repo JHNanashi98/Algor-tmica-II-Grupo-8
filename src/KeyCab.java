@@ -2,13 +2,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-import com.google.maps.GeocodingApiRequest;
-import com.google.maps.GeolocationApiRequest;
-import com.google.maps.GeolocationApi;
-
 import entidades.Auto;
 import entidades.Chofer;
 import entidades.Pasajero;
+
+import procesos.geoLocalizacion;
+import procesos.manejoMapa;
 import procesos.registroConfig;
 import procesos.inicioSesionConfig;
 import archivos.jsonConfig;
@@ -104,7 +103,6 @@ public class KeyCab {
         String email = s.next();
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
-        System.out.println(inicio.getPasajeros());
         if (inicio.IniciarSesionPasajero(email,contrasenia) == 1){
             int option;
             do {
@@ -112,7 +110,14 @@ public class KeyCab {
                 option = s.nextInt();
                 switch (option) {
                     case 1:
+                        Scanner l = new Scanner(System.in);
                         System.out.println("Introducir ubicacion");
+                        System.out.println("Latitud");
+                        double lat = l.nextDouble();
+                        System.out.println("longitud");
+                        double lon= l.nextDouble();
+                        manejoMapa mapa = new manejoMapa();
+                        mapa.crearMapa(lat, lon);
                         System.out.println("Buscando chof.....");
                         Calendar c = new GregorianCalendar();
                         System.out.println("Hora de inicio de busqueda "+c.getTime());
