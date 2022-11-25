@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import entidades.Auto;
 import entidades.Chofer;
+import entidades.Cuenta;
 import entidades.Pasajero;
 
 import procesos.manejoMapa;
@@ -102,7 +103,11 @@ public class KeyCab {
         String email = s.next();
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
-        if (inicio.IniciarSesionPasajero(email,contrasenia) == 1){
+        jsonConfig js = new jsonConfig();
+        if (inicio.IniciarSesionPasajero(email,contrasenia) != null){
+            Pasajero p = inicio.IniciarSesionPasajero(email,contrasenia);
+            System.out.println("Bievenido " + p.NombreCompleto());
+            Cuenta cuenta = new Chofer(p.getNombres(), p.getApellidoPat(),p.getApellidoPat(),p.getGenero(),p.getTelefono(),p.getDNI(),p.getEmail(),p.getContrasenia());
             int option;
             do {
                 imprimirMenuPas();
@@ -125,7 +130,8 @@ public class KeyCab {
                         System.out.println("Appi no disponible de momento, regrese mas tarde");
                         break;
                     case 3:
-                        System.out.println("Cambiar datos o borrar usuario");
+                        System.out.println("Appi no disponible de momento");
+                        js.escribePerfil(cuenta, p.getTipo());
                         break;
                     case 4:
                         System.out.println("Regresando al menu principal.....");
@@ -142,10 +148,14 @@ public class KeyCab {
         String email = s.next();
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
-        if (inicio.IniciarSesionChofer(email,contrasenia) == 1){
+        jsonConfig js = new jsonConfig();
+        if (inicio.IniciarSesionChofer(email,contrasenia) != null){
+            Chofer c = inicio.IniciarSesionChofer(email,contrasenia);
+            Cuenta cuenta = new Chofer(c.getNombres(), c.getApellidoPat(),c.getApellidoPat(),c.getGenero(),c.getTelefono(),c.getDNI(),c.getEmail(),c.getContrasenia());
+            System.out.println("Bievenido " + c.NombreCompleto());
             int option;
             do {
-                imprimirMenuChof();;
+                imprimirMenuChof();
                 option = s.nextInt();
                 switch (option) {
                     case 1:
@@ -155,7 +165,8 @@ public class KeyCab {
                         System.out.println("Appi no disponible de momento, regrese mas tarde");
                         break;
                     case 3:
-                        System.out.println("Cambiar datos o borrar usuario");
+                        System.out.println("Appi no disponible de momento");
+                        js.escribePerfil(cuenta, c.getTipo());
                         break;
                     case 4:
                         System.out.println("Regresando al menu principal.....");
