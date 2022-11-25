@@ -16,7 +16,6 @@ public class inicioSesionConfig extends configuracion {
             String email1  = String.valueOf(pasajero.getEmail());
             if (email1.equals(email)) {
                 if (pasajero.getContrasenia().equals(contra)) {
-                    System.out.println("Bievenido: " + pasajero.NombreCompleto());
                     return pasajero;
                 }
             }
@@ -35,7 +34,6 @@ public class inicioSesionConfig extends configuracion {
             String email1  = String.valueOf(chofer.getEmail());
             if (email1.equals(email)) {
                 if (chofer.getContrasenia().equals(contra)) {
-                    System.out.println("Bievenido" + chofer.NombreCompleto());
                     return chofer;
                 }
             }
