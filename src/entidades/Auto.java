@@ -1,7 +1,6 @@
 package entidades;
 
 public class Auto {
-    private Ruta ruta;
     private String placa;
     private int capacidad;
     private String marca;
@@ -20,5 +19,17 @@ public class Auto {
 
     public String getMarca() {
         return marca;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 }

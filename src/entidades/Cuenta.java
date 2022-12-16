@@ -1,5 +1,5 @@
 package entidades;
-
+import procesos.inicioSesionConfig;
 public class Cuenta {
     private String nombres;
     private String apellidoPat;
@@ -8,10 +8,8 @@ public class Cuenta {
     private String email;
     private String contrasenia;
     private String DNI;
-
     private char genero;
     protected String tipo;
-
     public Cuenta(String nombres, String apellidoPat, String apellidoMat, char genero, String telefono, String DNI ,String email, String contrasenia) {
         this.nombres = nombres;
         this.apellidoPat = apellidoPat;
@@ -33,8 +31,44 @@ public class Cuenta {
     public String NombreCompleto() {
         return nombres + " " + apellidoPat + " " + apellidoMat;
     }
-
     public String getTipo() {
         return tipo;
     }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public void setApellidoPat(String apellidoPat) {
+        this.apellidoPat = apellidoPat;
+    }
+
+    public void setApellidoMat(String apellidoMat) {
+        this.apellidoMat = apellidoMat;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
+
+    public void setGenero(char genero) {
+        this.genero = genero;
+    }
+
+    public void actualizarDatos(inicioSesionConfig inicio){
+        System.out.println("Sistema Actualizado Datos");
+    }
+
 }
