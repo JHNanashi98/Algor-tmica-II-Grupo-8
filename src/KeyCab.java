@@ -1,6 +1,5 @@
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
+import java.time.*;
 
 import entidades.Auto;
 import entidades.Chofer;
@@ -29,7 +28,7 @@ public class KeyCab {
                 case 1:
                     registro(config);
                     break;
-                    case 2:
+                case 2:
                     IniciarSesionPsj(inicio);
                     break;
                 case 3:
@@ -107,31 +106,32 @@ public class KeyCab {
         if (inicio.IniciarSesionPasajero(email,contrasenia) != null){
             Pasajero p = inicio.IniciarSesionPasajero(email,contrasenia);
             System.out.println("Bievenido " + p.NombreCompleto());
-            Cuenta cuenta = new Chofer(p.getNombres(), p.getApellidoPat(),p.getApellidoPat(),p.getGenero(),p.getTelefono(),p.getDNI(),p.getEmail(),p.getContrasenia());
             int option;
             do {
                 imprimirMenuPas();
                 option = s.nextInt();
                 switch (option) {
                     case 1:
-                        Scanner l = new Scanner(System.in);
-                        System.out.println("Introducir ubicacion");
-                        System.out.println("Latitud");
-                        double lat = l.nextDouble();
-                        System.out.println("longitud");
-                        double lon= l.nextDouble();
                         manejoMapa mapa = new manejoMapa();
-                        mapa.crearMapa(lat, lon);
+                        mapa.crearMapa();
                         System.out.println("Buscando chof.....");
-                        Calendar c = new GregorianCalendar();
-                        System.out.println("Hora de inicio de busqueda "+c.getTime());
+                        LocalDateTime fechViaje = LocalDateTime.now();
+                        System.out.println("Dia y Hora de inicio de busqueda "+ fechViaje);
+                        System.out.println();
                         break;
                     case 2:
                         System.out.println("Appi no disponible de momento, regrese mas tarde");
                         break;
                     case 3:
-                        System.out.println("Appi no disponible de momento");
-                        js.escribePerfil(cuenta, p.getTipo());
+                        System.out.println("Datos Actuales");
+                        js.escribePerfil(p, p.getTipo());
+                        int act;
+                        do {
+                            p.actualizarDatos(inicio, p);
+                            System.out.println("¿Ha terminado de actualizar todos sus datos?");
+                            System.out.println("Presione 2 para terminar la actualizacion");
+                            act = s.nextInt();
+                        }while (act!=2);
                         break;
                     case 4:
                         System.out.println("Regresando al menu principal.....");
@@ -151,7 +151,6 @@ public class KeyCab {
         jsonConfig js = new jsonConfig();
         if (inicio.IniciarSesionChofer(email,contrasenia) != null){
             Chofer c = inicio.IniciarSesionChofer(email,contrasenia);
-            Cuenta cuenta = new Chofer(c.getNombres(), c.getApellidoPat(),c.getApellidoPat(),c.getGenero(),c.getTelefono(),c.getDNI(),c.getEmail(),c.getContrasenia());
             System.out.println("Bievenido " + c.NombreCompleto());
             int option;
             do {
@@ -165,8 +164,15 @@ public class KeyCab {
                         System.out.println("Appi no disponible de momento, regrese mas tarde");
                         break;
                     case 3:
-                        System.out.println("Appi no disponible de momento");
-                        js.escribePerfil(cuenta, c.getTipo());
+                        System.out.println("Datos Actuales");
+                        js.escribePerfil(c, c.getTipo());
+                        int act;
+                        do {
+                            c.actualizarDatos(inicio, c);
+                            System.out.println("¿Ha terminado de actualizar todos sus datos?");
+                            System.out.println("Presione 2 para terminar la actualizacion");
+                            act = s.nextInt();
+                        }while (act!=2);
                         break;
                     case 4:
                         System.out.println("Regresando al menu principal.....");
