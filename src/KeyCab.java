@@ -6,16 +6,15 @@ import entidades.Chofer;
 import entidades.Cuenta;
 import entidades.Pasajero;
 
+import org.jxmapviewer.JXMapViewer;
 import procesos.manejoMapa;
 import procesos.registroConfig;
-import procesos.inicioSesionConfig;
 import archivos.jsonConfig;
 
 public class KeyCab {
     static Scanner s = new Scanner(System.in);
     public static void main(String[] args) {
         registroConfig config = new registroConfig();
-        inicioSesionConfig inicio = new inicioSesionConfig();
         int option;
         jsonConfig js = new jsonConfig();
         js.leerConfig(config);
@@ -29,10 +28,10 @@ public class KeyCab {
                     registro(config);
                     break;
                 case 2:
-                    IniciarSesionPsj(inicio);
+                    IniciarSesionPsj(config);
                     break;
                 case 3:
-                    IniciarSesionChof(inicio);
+                    IniciarSesionChof(config);
                     break;
                 case 4:
                     salirApp();
@@ -96,15 +95,16 @@ public class KeyCab {
             }
         }
     }
-    public static void IniciarSesionPsj(inicioSesionConfig inicio){
+    public static void IniciarSesionPsj(registroConfig config){
         System.out.println("");
         System.out.println("Ingrese su email");
         String email = s.next();
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
         jsonConfig js = new jsonConfig();
-        if (inicio.IniciarSesionPasajero(email,contrasenia) != null){
-            Pasajero p = inicio.IniciarSesionPasajero(email,contrasenia);
+        Pasajero temp = new Pasajero(email,contrasenia);
+        Pasajero p = temp.IniciarSesion(email,contrasenia, config);
+        if (p!= null){
             System.out.println("Bievenido " + p.NombreCompleto());
             int option;
             do {
@@ -127,7 +127,7 @@ public class KeyCab {
                         js.escribePerfil(p, p.getTipo());
                         int act;
                         do {
-                            p.actualizarDatos(inicio, p);
+                            p.actualizarDatos(config, p);
                             System.out.println("¿Ha terminado de actualizar todos sus datos?");
                             System.out.println("Presione 2 para terminar la actualizacion");
                             act = s.nextInt();
@@ -139,19 +139,18 @@ public class KeyCab {
                 }
             }
             while (option != 4);
-
         }
     }
-    public static void IniciarSesionChof(inicioSesionConfig inicio){
+    public static void IniciarSesionChof(registroConfig config){
         System.out.println("");
         System.out.println("Ingrese su email");
         String email = s.next();
         System.out.println("Ingrese su contrasenia");
         String contrasenia = s.next();
         jsonConfig js = new jsonConfig();
-        if (inicio.IniciarSesionChofer(email,contrasenia) != null){
-            Chofer c = inicio.IniciarSesionChofer(email,contrasenia);
-
+        Chofer temp = new Chofer(email,contrasenia);
+        Chofer c = temp.IniciarSesion(email,contrasenia, config);
+        if (c.IniciarSesion(email,contrasenia, config) != null){
             System.out.println("Bievenido " + c.NombreCompleto());
             int option;
             do {
@@ -169,7 +168,7 @@ public class KeyCab {
                         js.escribePerfil(c, c.getTipo());
                         int act;
                         do {
-                            c.actualizarDatos(inicio, c);
+                            c.actualizarDatos(config, c);
                             System.out.println("¿Ha terminado de actualizar todos sus datos?");
                             System.out.println("Presione 2 para terminar la actualizacion");
                             act = s.nextInt();

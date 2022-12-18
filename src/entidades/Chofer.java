@@ -1,8 +1,7 @@
 package entidades;
 
-import procesos.inicioSesionConfig;
+import procesos.registroConfig;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -12,16 +11,18 @@ public class Chofer extends Cuenta {
         super(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
         tipo = "Chofer";
     }
-    @Override
-    public void actualizarDatos(inicioSesionConfig inicio){
-        System.out.println("Sistema Actualizado Datos");
+    public Chofer(String email, String contrasenia){
+        super(email, contrasenia);
     }
-    public void actualizarDatos(inicioSesionConfig inicio, Chofer c){
+    @Override
+    public void actualizarDatos(registroConfig config, Cuenta cu){
+        Chofer c = (Chofer)cu;
         System.out.println("¿Que datos desea actualizar, Chofer o Auto?");
         System.out.println("1) Chofer");
         System.out.println("2) Auto");
+        System.out.println("Cualquier otro numero regresar al menu anterior");
         Scanner s = new Scanner(System.in);
-        HashMap<Chofer, Auto> map = inicio.getMap();
+        HashMap<Chofer, Auto> map = config.getMap();
         for(Map.Entry<Chofer,Auto> entrada :map.entrySet()){
             if(entrada.getKey().equals(c)){
                 int op = s.nextInt();
@@ -117,7 +118,26 @@ public class Chofer extends Cuenta {
                 a.setMarca(marca);
                 break;
         }
-
+    }
+    @Override
+    public Chofer IniciarSesion(String email, String contra,registroConfig config) {
+        HashMap<Chofer, Auto> map = config.getMap();
+        int i=0;
+        Chofer [] chof = new Chofer[map.size()];
+        for (Map.Entry<Chofer,Auto> entrada : map.entrySet()) {
+            chof[i] =entrada.getKey();
+            Chofer chofer = chof[i];
+            String email1  = String.valueOf(chofer.getEmail());
+            if (email1.equals(email)) {
+                if (chofer.getContrasenia().equals(contra)) {
+                    return chofer;
+                }
+                System.out.println("Contraseña incorrecta");
+            }
+            i++;
+        }
+        System.out.println("Usuario incorrecto");
+        return null;
     }
 }
 
