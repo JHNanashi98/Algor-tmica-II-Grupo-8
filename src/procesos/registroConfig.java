@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class registroConfig extends configuracion{
     public int creaChofer(Chofer chof, Auto auto){
-        Iterator<Map.Entry<Chofer, Auto>> entrada = this.getMap().entrySet().iterator();
+        Iterator<Map.Entry<Chofer, Auto>> entrada = this.getCAMap().entrySet().iterator();
         while(entrada.hasNext()) {
             Map.Entry<Chofer,Auto> entry = entrada.next();
             if(chof.getEmail().equals(entry.getKey().getEmail())){
@@ -20,7 +20,7 @@ public class registroConfig extends configuracion{
                 return 1;
             }
         }
-        this.getMap().put(chof,auto);
+        this.getCAMap().put(chof,auto);
         return 0;
     }
     public int creaPasajero(Pasajero pas){
@@ -61,7 +61,7 @@ public class registroConfig extends configuracion{
     }
     public JSONArray choferesToJSON(){
         JSONArray arrayChof= new JSONArray();
-        HashMap<Chofer, Auto> map = this.getMap();
+        HashMap<Chofer, Auto> map = this.getCAMap();
         int i=0;
         Chofer [] chof = new Chofer[map.size()];
         Auto [] aut = new Auto[map.size()];

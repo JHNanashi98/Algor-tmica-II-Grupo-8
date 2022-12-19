@@ -22,7 +22,7 @@ public class Chofer extends Cuenta {
         System.out.println("2) Auto");
         System.out.println("Cualquier otro numero regresar al menu anterior");
         Scanner s = new Scanner(System.in);
-        HashMap<Chofer, Auto> map = config.getMap();
+        HashMap<Chofer, Auto> map = config.getCAMap();
         for(Map.Entry<Chofer,Auto> entrada :map.entrySet()){
             if(entrada.getKey().equals(c)){
                 int op = s.nextInt();
@@ -121,7 +121,7 @@ public class Chofer extends Cuenta {
     }
     @Override
     public Chofer IniciarSesion(String email, String contra,registroConfig config) {
-        HashMap<Chofer, Auto> map = config.getMap();
+        HashMap<Chofer, Auto> map = config.getCAMap();
         int i=0;
         Chofer [] chof = new Chofer[map.size()];
         for (Map.Entry<Chofer,Auto> entrada : map.entrySet()) {
