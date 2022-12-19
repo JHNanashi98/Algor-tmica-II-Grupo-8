@@ -15,11 +15,7 @@ import javax.swing.event.MouseInputListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.LinkedHashSet;
-
 public class manejoMapa extends configuracion{
     public void crearMapa(configuracion config) {
         TileFactoryInfo info = new OSMTileFactoryInfo();
