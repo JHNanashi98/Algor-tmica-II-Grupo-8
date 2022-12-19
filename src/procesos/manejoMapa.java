@@ -1,6 +1,5 @@
 package procesos;
 
-import entidades.Ruta;
 import mapeo.ventanaKeyCab;
 import org.jxmapviewer.JXMapViewer;
 import org.jxmapviewer.OSMTileFactoryInfo;
@@ -14,7 +13,6 @@ import org.jxmapviewer.viewer.DefaultTileFactory;
 import javax.swing.event.MouseInputListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import java.util.Scanner;
 public class manejoMapa extends configuracion{
     public void crearMapa(configuracion config) {

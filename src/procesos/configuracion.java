@@ -1,5 +1,4 @@
 package procesos;
-
 import entidades.Pasajero;
 import entidades.Chofer;
 import entidades.Auto;
@@ -15,7 +14,6 @@ public abstract class configuracion {
     private static HashMap<Chofer,Auto> choferAutoMap;
     private static Vector<Cuenta> admin;
     private static HashMap<Viaje,Ruta> viajeRutaMap;
-
     public configuracion(){
         this.pasajeros = new Vector<Pasajero>();
         this.choferAutoMap = new HashMap<Chofer, Auto>();
@@ -29,6 +27,5 @@ public abstract class configuracion {
         return choferAutoMap;
     }
     public static Vector<Cuenta> getAdmin() {return admin;}
-
     public HashMap<Viaje,Ruta> getVRMap(){return viajeRutaMap;}
 }

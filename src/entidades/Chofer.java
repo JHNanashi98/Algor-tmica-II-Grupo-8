@@ -121,6 +121,7 @@ public class Chofer extends Cuenta {
     }
     @Override
     public Chofer IniciarSesion(String email, String contra,registroConfig config) {
+
         HashMap<Chofer, Auto> map = config.getCAMap();
         int i=0;
         Chofer [] chof = new Chofer[map.size()];
