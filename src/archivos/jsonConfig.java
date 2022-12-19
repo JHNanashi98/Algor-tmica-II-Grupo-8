@@ -27,7 +27,7 @@ public class jsonConfig {
             JSONObject obj = (JSONObject) parser.parse(reader);
             leerCrearPas(obj, config);
             leerCrearChof(obj, config);
-            System.out.println("Lectura correcta" + obj);
+            System.out.println("Lectura de Json correcta");
             System.out.println("");
         } catch (FileNotFoundException e) {
             e.printStackTrace();

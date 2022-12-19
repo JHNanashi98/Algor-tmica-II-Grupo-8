@@ -1,11 +1,11 @@
 import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import java.util.Vector;
 
-import entidades.*;
-
-import entidades.pagos.tPago;
+import entidades.Chofer;
+import entidades.Pasajero;
+import entidades.Ruta;
+import entidades.Auto;
 import org.jxmapviewer.viewer.GeoPosition;
 import procesos.manejoMapa;
 import procesos.registroConfig;
@@ -120,7 +120,6 @@ public class KeyCab {
                             Ruta r = mapa.crearMapa(config);
                             System.out.println("Presione S para enviar solicitud");
                             c= s.next().charAt(0);
-                            System.out.println(r);
                             ini=r.getPosIni();
                             fin=r.getPosFin();
                             p.pagarViaje(ini,fin,p);

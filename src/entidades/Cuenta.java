@@ -1,7 +1,6 @@
 package entidades;
-import procesos.registroConfig;
 
-public  abstract class Cuenta implements interCuenta{
+public class Cuenta{
     private String nombres;
     private String apellidoPat;
     private String apellidoMat;
@@ -36,10 +35,10 @@ public  abstract class Cuenta implements interCuenta{
     public String NombreCompleto() {
         return nombres + " " + apellidoPat + " " + apellidoMat;
     }
+
     public String getTipo() {
         return tipo;
     }
-
     public void setNombres(String nombres) {
         this.nombres = nombres;
     }

@@ -1,6 +1,7 @@
 package mapeo;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.Dimension;
 
 public class marcadorPNG extends JButton {
     public String icono;

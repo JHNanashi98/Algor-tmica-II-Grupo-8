@@ -13,8 +13,6 @@ public class Efectivo extends tPago {
     @Override
     public double calcularPago(GeoPosition geoIni, GeoPosition geoFin) {
         double distLat=geoIni.getLatitude()-geoFin.getLatitude();
-        System.out.println(geoIni);
-        System.out.println(geoFin);
         double distLon=geoIni.getLongitude()-geoFin.getLongitude();
         distLat=distLat*distLat;
         distLon=distLon*distLon;

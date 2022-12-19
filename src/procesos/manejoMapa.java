@@ -35,8 +35,6 @@ public class manejoMapa{
         System.out.println("Confirmar Ubicacion S/N");
         op = s.next().charAt(0);
            if (op == 'S') {
-               System.out.println(geoI[0]);
-               System.out.println(geoF[0]);
                ventana.dispose();
                Ruta r = new Ruta(geoI[0], geoF[0]);
            return r;
@@ -57,8 +55,7 @@ public class manejoMapa{
                 if (e.getClickCount() == 1 && e.getButton() == MouseEvent.BUTTON1) {
                     java.awt.Point p = e.getPoint();
                     GeoPosition geo = mapa.convertPointToGeoPosition(p);
-                    System.out.println("Punto de partida");
-                    System.out.println("X:" + geo.getLatitude() + ",Y:" + geo.getLongitude());
+                    System.out.println("Punto de partida"+" X: " + geo.getLatitude() + ",Y:" + geo.getLongitude());
                     arregloPos[0] = geo;
                 }
             }
@@ -72,8 +69,7 @@ public class manejoMapa{
                 if (e.getClickCount() == 1 && e.getButton() == MouseEvent.BUTTON3) {
                     java.awt.Point p = e.getPoint();
                     GeoPosition geo = mapa.convertPointToGeoPosition(p);
-                    System.out.println("Punto de Llegada");
-                    System.out.println("X:" + geo.getLatitude() + ",Y:" + geo.getLongitude());
+                    System.out.println("Punto de Llegada "+"X: " + geo.getLatitude() + ",Y: " + geo.getLongitude());
                     arregloPos[0] = geo;
                 }
             }
@@ -102,7 +98,7 @@ public class manejoMapa{
             GeoPosition geoC = geoI[0];
             return geoC;
         }
-        return null;
+        else return null;
     }
 }
 
