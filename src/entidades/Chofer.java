@@ -20,7 +20,7 @@ public class Chofer extends Cuenta {
         System.out.println("¿Que datos desea actualizar, Chofer o Auto?");
         System.out.println("1) Chofer");
         System.out.println("2) Auto");
-        System.out.println("Cualquier otro numero regresar al menu anterior");
+        System.out.println("Digite cualquier otro numero regresar al menu anterior");
         Scanner s = new Scanner(System.in);
         HashMap<Chofer, Auto> map = config.getCAMap();
         for(Map.Entry<Chofer,Auto> entrada :map.entrySet()){
@@ -35,6 +35,8 @@ public class Chofer extends Cuenta {
                         Auto auto = entrada.getValue();
                         actilizadDatosAut(auto, s);
                         map.put(entrada.getKey(),auto);
+                        break;
+                    default:
                         break;
                 }
             }
@@ -121,7 +123,6 @@ public class Chofer extends Cuenta {
     }
     @Override
     public Chofer IniciarSesion(String email, String contra,registroConfig config) {
-
         HashMap<Chofer, Auto> map = config.getCAMap();
         int i=0;
         Chofer [] chof = new Chofer[map.size()];
@@ -139,6 +140,28 @@ public class Chofer extends Cuenta {
         }
         System.out.println("Usuario incorrecto");
         return null;
+    }
+
+    @Override
+    public void escribePerfil(registroConfig config, Cuenta cu) {
+        Chofer c = (Chofer) cu;
+        System.out.println("Mostrando datos del Usuario ");
+        System.out.println("Nombres "+ c.getNombres());
+        System.out.println("Apellidos "+ c.getApellidoPat()+" "+c.getApellidoMat());
+        System.out.println("Genero "+ c.getGenero());
+        System.out.println("Telefono "+c.getTelefono());
+        System.out.println("DNI "+ c.getDNI());
+        System.out.println("email "+ c.getEmail());
+        System.out.println("contrasenia "+ c.getContrasenia());
+        HashMap<Chofer, Auto> map = config.getCAMap();
+        for (Map.Entry<Chofer,Auto> entrada : map.entrySet()) {
+            if(entrada.getKey().equals(c)) {
+                System.out.println("Auto");
+                System.out.println("Marca "+entrada.getValue().getMarca());
+                System.out.println("Capacidad "+entrada.getValue().getCapacidad());
+                System.out.println("Capacidad "+entrada.getValue().getPlaca());
+            }
+        }
     }
 
     @Override

@@ -89,6 +89,19 @@ public class Pasajero extends Cuenta{
     }
 
     @Override
+    public void escribePerfil(registroConfig config, Cuenta c) {
+        Pasajero p = (Pasajero) c;
+        System.out.println("Mostrando datos del Usuario ");
+        System.out.println("Nombres "+ p.getNombres());
+        System.out.println("Apellidos "+ p.getApellidoPat()+" "+p.getApellidoMat());
+        System.out.println("Genero "+ p.getGenero());
+        System.out.println("Telefono "+p.getTelefono());
+        System.out.println("DNI "+ p.getDNI());
+        System.out.println("email "+ p.getEmail());
+        System.out.println("contrasenia "+ p.getContrasenia());
+    }
+
+    @Override
     public void mostrarViaje() {
 
     }

@@ -51,7 +51,6 @@ public class jsonConfig {
         }
         System.out.println("Sistema Actualizado");
     }
-
     public void leerCrearChof(JSONObject jsonObject, registroConfig config) {
         JSONArray arrayChof = (JSONArray) jsonObject.get("Chofer");
         Iterator it = arrayChof.iterator();
@@ -92,42 +91,6 @@ public class jsonConfig {
             String contrasenia= (String)pasj.get("contrasenia");
             Pasajero p = new Pasajero(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
             config.creaPasajero(p);
-        }
-    }
-   public void escribePerfil(Cuenta cuenta, String tipo){
-        JSONParser parser = new JSONParser();
-        try{
-            Object obj =parser.parse(new FileReader(archivo));
-            JSONObject jsonObject =(JSONObject) obj;
-            JSONArray array = selcTipo(tipo,jsonObject);
-            System.out.println("");
-            for(int i=0; i<array.size(); i++){
-                JSONObject jsonObject1 = (JSONObject) array.get(i);
-                if(cuenta.getEmail().equals(jsonObject1.get("email"))){
-                    System.out.println("Mostrando datos del Usuario ");
-                    System.out.println("Nombres "+ jsonObject1.get("nombres"));
-                    System.out.println("Apellidos "+ jsonObject1.get("apellidoPat")+jsonObject1.get("apellidoMat"));
-                    System.out.println("Genero "+ jsonObject1.get("genero"));
-                    System.out.println("Telefono "+ jsonObject1.get("telefono"));
-                    System.out.println("DNI "+ jsonObject1.get("DNI"));
-                    System.out.println("email "+ jsonObject1.get("email"));
-                    System.out.println("contrasenia "+ jsonObject1.get("contrasenia"));
-                    if(tipo.equals("Chofer")) {
-                        JSONObject auto = (JSONObject)jsonObject1.get("Auto");
-                        System.out.println("Auto");
-                        System.out.println("marca " + auto.get("marca"));
-                        System.out.println("capacidad " + auto.get("capacidad"));
-                        System.out.println("placa " + auto.get("placa"));
-                    }
-                }
-            }
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
         }
     }
     public JSONArray selcTipo(String tipo, JSONObject jsonObject){

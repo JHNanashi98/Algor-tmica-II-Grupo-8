@@ -132,7 +132,7 @@ public class KeyCab {
                         break;
                     case 3:
                         System.out.println("Datos Actuales");
-                        js.escribePerfil(p, p.getTipo());
+                        p.escribePerfil(config,p);
                         int act;
                         do {
                             p.actualizarDatos(config, p);
@@ -173,7 +173,7 @@ public class KeyCab {
                         break;
                     case 3:
                         System.out.println("Datos Actuales");
-                        js.escribePerfil(c, c.getTipo());
+                        c.escribePerfil(config,c);
                         int act;
                         do {
                             c.actualizarDatos(config, c);
