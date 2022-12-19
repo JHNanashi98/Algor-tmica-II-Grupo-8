@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.time.LocalDateTime;
+import java.util.UUID;
+import java.util.Vector;
 
 import entidades.*;
 
@@ -122,6 +124,9 @@ public class KeyCab {
                             ini=r.getPosIni();
                             fin=r.getPosFin();
                             p.pagarViaje(ini,fin,p);
+                            UUID u = UUID.randomUUID();
+                            Ruta ruta = new Ruta(ini, fin, p.getEmail(),u);
+                            config.getRutas().add(ruta);
                         }while(c!='S');
                         System.out.println("Buscando chof.....");
                         LocalDateTime fechViaje = LocalDateTime.now();
@@ -166,7 +171,16 @@ public class KeyCab {
                 option = s.nextInt();
                 switch (option) {
                     case 1:
-                        System.out.println("Buscando solicitud de pasajero");
+                        System.out.println("Buscando la solicitud de pasajero mas cercano");
+                        manejoMapa mapa = new manejoMapa();
+                        GeoPosition ini;
+                        char selec;
+                        do {
+                            ini = mapa.crearMapa();
+                            System.out.println("Presione S aceptar la solicitud");
+                            selec= s.next().charAt(0);
+                            System.out.println(ini);
+                        }while(selec!='S');
                         break;
                     case 2:
                         System.out.println("Appi no disponible de momento, regrese mas tarde");

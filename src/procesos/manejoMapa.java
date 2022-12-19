@@ -80,5 +80,29 @@ public class manejoMapa{
         });
         return arregloPos;
     }
+    public GeoPosition crearMapa() {
+        TileFactoryInfo info = new OSMTileFactoryInfo();
+        DefaultTileFactory tile = new DefaultTileFactory(info);
+        ventanaKeyCab ventana = new ventanaKeyCab();
+        JXMapViewer mapa = ventana.getMapa();
+        mapa.setTileFactory(tile);
+        geoLocalizacion geo = new geoLocalizacion();
+        mapa.setAddressLocation(geo.consegirUbicacion(-12.06215203252874, -77.03681945800781));
+        mapa.setZoom(8);
+        moverMapa(mapa);
+        char op;
+        System.out.println("Use el click izquierdo para seleccionar su ubicacion Actual");
+        GeoPosition[] geoI = selecCoordsInicio(mapa);
+        Scanner s = new Scanner(System.in);
+        System.out.println("Confirmar Ubicacion S/N");
+        op = s.next().charAt(0);
+        if (op == 'S') {
+            System.out.println(geoI[0]);
+            ventana.dispose();
+            GeoPosition geoC = geoI[0];
+            return geoC;
+        }
+        return null;
+    }
 }
 
