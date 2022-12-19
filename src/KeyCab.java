@@ -1,12 +1,11 @@
 import java.util.Scanner;
-import java.time.*;
+import java.time.LocalDateTime;
 
 import entidades.Auto;
 import entidades.Chofer;
-import entidades.Cuenta;
+
 import entidades.Pasajero;
 
-import org.jxmapviewer.JXMapViewer;
 import procesos.manejoMapa;
 import procesos.registroConfig;
 import archivos.jsonConfig;
@@ -113,13 +112,10 @@ public class KeyCab {
                 switch (option) {
                     case 1:
                         manejoMapa mapa = new manejoMapa();
-                        mapa.crearMapa(config);
+                        mapa.crearMapa();
                         System.out.println("Buscando chof.....");
                         LocalDateTime fechViaje = LocalDateTime.now();
                         System.out.println("Dia y Hora de inicio de busqueda "+ fechViaje);
-                        System.out.println("Confirme seleccion S/N");
-                        char c =s.next().charAt(0);
-
                         break;
                     case 2:
                         System.out.println("Appi no disponible de momento, regrese mas tarde");
