@@ -2,9 +2,13 @@ package mapeo;
 
 import org.jxmapviewer.JXMapViewer;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class ventanaKeyCab extends JFrame{
@@ -15,19 +19,19 @@ public class ventanaKeyCab extends JFrame{
     private JXMapViewer mapa;
     private JPanel panelMapa;
     private JPanel panelDirec;
-    private JButton cBoton;
 
     public ventanaKeyCab() {
         setContentPane(mapaVentana);
         setTitle("MapaKeyCab");
         setSize(1280, 720);
         setVisible(true);
-        cBoton.addActionListener(new ActionListener() {
+        mapa.addMouseListener(new MouseAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                cerrarVentana();
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
             }
         });
+
     }
     public JPanel getMapaVentana() {
         return mapaVentana;
@@ -36,10 +40,4 @@ public class ventanaKeyCab extends JFrame{
         return mapa;
     }
 
-    public JButton getcBoton() {
-        return cBoton;
-    }
-    public void cerrarVentana(){
-        super.dispose();
-    }
 }

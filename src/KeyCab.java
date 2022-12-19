@@ -113,11 +113,13 @@ public class KeyCab {
                 switch (option) {
                     case 1:
                         manejoMapa mapa = new manejoMapa();
-                        mapa.crearMapa();
+                        mapa.crearMapa(config);
                         System.out.println("Buscando chof.....");
                         LocalDateTime fechViaje = LocalDateTime.now();
                         System.out.println("Dia y Hora de inicio de busqueda "+ fechViaje);
-                        System.out.println();
+                        System.out.println("Confirme seleccion S/N");
+                        char c =s.next().charAt(0);
+
                         break;
                     case 2:
                         System.out.println("Appi no disponible de momento, regrese mas tarde");
