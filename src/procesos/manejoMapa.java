@@ -37,6 +37,7 @@ public class manejoMapa{
             if (op == 'S') {
                 System.out.println(geoI[0]);
                 System.out.println(geoF[0]);
+                ventana.dispose();
             }
         }while(op != 'S');
     }
