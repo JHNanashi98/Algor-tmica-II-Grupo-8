@@ -1,5 +1,6 @@
 package procesos;
 
+import entidades.Ruta;
 import mapeo.ventanaKeyCab;
 import org.jxmapviewer.JXMapViewer;
 import org.jxmapviewer.OSMTileFactoryInfo;
@@ -15,7 +16,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Scanner;
 public class manejoMapa{
-    public void crearMapa() {
+    public Ruta crearMapa(configuracion config) {
         TileFactoryInfo info = new OSMTileFactoryInfo();
         DefaultTileFactory tile = new DefaultTileFactory(info);
         ventanaKeyCab ventana = new ventanaKeyCab();
@@ -26,20 +27,21 @@ public class manejoMapa{
         mapa.setZoom(8);
         moverMapa(mapa);
         char op;
-        do {
-            System.out.println("Use el click izquierdo para seleccionar la posicion inicial");
-            System.out.println("Use el click derecho para seleccionar la posicion final");
-            GeoPosition[] geoI = selecCoordsInicio(mapa);
-            GeoPosition[] geoF = selecCoordsFin(mapa);
-            Scanner s = new Scanner(System.in);
-            System.out.println("Confirmar Viaje S/N");
-            op = s.next().charAt(0);
-            if (op == 'S') {
-                System.out.println(geoI[0]);
-                System.out.println(geoF[0]);
-                ventana.dispose();
-            }
-        }while(op != 'S');
+        System.out.println("Use el click izquierdo para seleccionar la posicion inicial");
+        System.out.println("Use el click derecho para seleccionar la posicion final");
+        GeoPosition[] geoI = selecCoordsInicio(mapa);
+        GeoPosition[] geoF = selecCoordsFin(mapa);
+        Scanner s = new Scanner(System.in);
+        System.out.println("Confirmar Ubicacion S/N");
+        op = s.next().charAt(0);
+           if (op == 'S') {
+               System.out.println(geoI[0]);
+               System.out.println(geoF[0]);
+               ventana.dispose();
+               Ruta r = new Ruta(geoI[0], geoF[0]);
+           return r;
+        }
+        return null;
     }
     public void moverMapa(JXMapViewer mapa) {
         MouseInputListener mouse = new PanMouseInputListener(mapa);

@@ -1,11 +1,10 @@
 import java.util.Scanner;
 import java.time.LocalDateTime;
 
-import entidades.Auto;
-import entidades.Chofer;
+import entidades.*;
 
-import entidades.Pasajero;
-
+import entidades.pagos.tPago;
+import org.jxmapviewer.viewer.GeoPosition;
 import procesos.manejoMapa;
 import procesos.registroConfig;
 import archivos.jsonConfig;
@@ -112,7 +111,18 @@ public class KeyCab {
                 switch (option) {
                     case 1:
                         manejoMapa mapa = new manejoMapa();
-                        mapa.crearMapa();
+                        GeoPosition ini;
+                        GeoPosition fin;
+                        char c;
+                        do {
+                            Ruta r = mapa.crearMapa(config);
+                            System.out.println("Presione S para enviar solicitud");
+                            c= s.next().charAt(0);
+                            System.out.println(r);
+                            ini=r.getPosIni();
+                            fin=r.getPosFin();
+                            p.pagarViaje(ini,fin,p);
+                        }while(c!='S');
                         System.out.println("Buscando chof.....");
                         LocalDateTime fechViaje = LocalDateTime.now();
                         System.out.println("Dia y Hora de inicio de busqueda "+ fechViaje);

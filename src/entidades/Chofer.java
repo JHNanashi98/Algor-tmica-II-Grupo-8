@@ -140,5 +140,10 @@ public class Chofer extends Cuenta {
         System.out.println("Usuario incorrecto");
         return null;
     }
+
+    @Override
+    public void mostrarViaje() {
+
+    }
 }
 

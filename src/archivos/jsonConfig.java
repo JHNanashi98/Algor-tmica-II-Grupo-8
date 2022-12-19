@@ -94,8 +94,6 @@ public class jsonConfig {
             config.creaPasajero(p);
         }
     }
-
-
    public void escribePerfil(Cuenta cuenta, String tipo){
         JSONParser parser = new JSONParser();
         try{
