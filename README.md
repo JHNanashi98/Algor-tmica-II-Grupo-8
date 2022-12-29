@@ -1,5 +1,7 @@
 Decipcion: Este github se va a utilizar para proyecto del curso de **Algoritmica II** (Semestre 2022-2) UNMSM FISI.  
-El proyecto consiste en crear un sistema similiar a un aplicativo de taxis.  
+El proyecto consiste en crear un sistema similiar a un aplicativo de taxis. 
+- Compañeros del grupo 7, este es un fork, una bifurcacion/copia, del proyecto del grupo 8 ya que el repo anterior no era mio no puedo agregarlos; intenten guardar sus cambios del anterior repo, al que hicieron git clone. El original
+- Luego clonan este repo y pegan sus cambios y los envian con push.
 # Lenguaje a utilizar
 Sistema implementado en Java
 # Profesor
