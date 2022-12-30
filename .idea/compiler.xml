@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="KeyCab" target="19" />
+      <module name="KeyCab" target="18" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -13,6 +13,11 @@ public class Pasajero extends Cuenta implements interCuenta{
         super(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
         tipo ="Pasajero";
     }
+
+    public Pasajero(String email, String contrasenia) {
+        super(email, contrasenia);
+    }
+
     public void actualizarDatos(registroConfig config, Cuenta c) {
         Scanner s = new Scanner(System.in);
         System.out.println("Sistema Actualizado Datos");
@@ -37,8 +42,9 @@ public class Pasajero extends Cuenta implements interCuenta{
                 System.out.println("Ingrese Apellido Paterno");
                 String apellidoP = f.nextLine();
                 config.getPasajeros().get(pos).setApellidoPat(apellidoP);
-                String apellidoM = f.nextLine();
+
                 System.out.println("Ingrese Apellido Materno");
+                String apellidoM = f.nextLine();
                 config.getPasajeros().get(pos).setApellidoMat(apellidoM);
                 break;
             case 3:
@@ -68,9 +74,7 @@ public class Pasajero extends Cuenta implements interCuenta{
                 break;
         }
     }
-    public Pasajero(String email, String contrasenia){
-        super(email,contrasenia);
-    }
+
     @Override
     public Pasajero IniciarSesion(String email, String contra, registroConfig config) {
         Enumeration<Pasajero> pas = config.getPasajeros().elements();

@@ -6,14 +6,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Chofer extends Cuenta implements interCuenta{
-    public Chofer(String nombres, String apellidoPat, String apellidoMat, char genero, String telefono, String DNI, String email, String contrasenia) {
+public class Chofer extends Cuenta implements interCuenta
+{
+    public Chofer(String nombres, String apellidoPat, String apellidoMat, char genero, String telefono, String DNI, String email, String contrasenia)
+    {
         super(nombres, apellidoPat, apellidoMat, genero, telefono, DNI, email, contrasenia);
         tipo = "Chofer";
     }
-    public Chofer(String email, String contrasenia){
-        super(email, contrasenia);
+
+    public Chofer(String email, String contrasenia) {
+        super(email,contrasenia);
     }
+
     @Override
     public void actualizarDatos(registroConfig config, Cuenta cu){
         Chofer c = (Chofer)cu;

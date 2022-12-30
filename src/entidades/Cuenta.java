@@ -10,6 +10,11 @@ public class Cuenta{
     private String DNI;
     private char genero;
     protected String tipo;
+    //NUEVO
+    private String nada;
+    private String horario;
+    private String zona;
+
     public Cuenta(String nombres, String apellidoPat, String apellidoMat, char genero, String telefono, String DNI ,String email, String contrasenia) {
         this.nombres = nombres;
         this.apellidoPat = apellidoPat;
@@ -20,10 +25,34 @@ public class Cuenta{
         this.email = email;
         this.contrasenia = contrasenia;
     }
+
     public Cuenta(String email, String contrasenia){
         this.email = email;
         this.contrasenia = contrasenia;
     }
+
+    //NUEVO
+    public Cuenta(String nada, String horario, String zona)
+    {
+        this.nada = nada;
+        this.horario = horario;
+        this.zona = zona;
+    }
+    //NUEVO
+    public String getHorario() {
+        return horario;
+    }
+    public String getZona() {
+        return zona;
+    }
+
+    public void setZona(String zona) {
+        this.zona = zona;
+    }
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
     public String getNombres(){return this.nombres;};
     public String getApellidoPat(){return this.apellidoPat;};
     public String getApellidoMat(){return this.apellidoMat;};

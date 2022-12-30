@@ -1,0 +1,14 @@
+
+
+	- Nombres: Paulo
+	- Apellido Paterno: Gonzales
+	- Apellido Materno: Lerma
+	- Género: M
+	- Teléfono: 987654321
+	- DNI: 324534
+	- E-mail: paulo@
+	- Capacidad Total del auto: 5
+	- Marca del auto: wrg
+	- Placa del auto: RGER4345
+	- Horario de Trabajo: 8 a 9
+	- Zona de Trabajo: Lima
